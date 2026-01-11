@@ -1,0 +1,37 @@
+ // Input row: label + text field
+ JLabel prompt = new JLabel("Enter your name:");
+ nameField = new JTextField(20);
+ topPanel.add(prompt, BorderLayout.WEST);
+ topPanel.add(nameField, BorderLayout.CENTER);
+
+ add(topPanel, BorderLayout.NORTH);
+
+ // Button row
+ JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+ JButton greetBtn = new JButton("Greet");
+ JButton clearBtn = new JButton("Clear");
+ JButton exitBtn  = new JButton("Exit");
+
+ buttonPanel.add(greetBtn);
+ buttonPanel.add(clearBtn);
+ buttonPanel.add(exitBtn);
+
+ add(buttonPanel, BorderLayout.CENTER);
+
+ // Status label at bottom
+ statusLabel = new JLabel("Ready.");
+ statusLabel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+ add(statusLabel, BorderLayout.SOUTH);
+
+ // Action listeners
+ greetBtn.addActionListener(e -> greetUser());
+ clearBtn.addActionListener(e -> clearInput());
+ exitBtn.addActionListener(e -> exitApp());
+
+ // Enter key in text field triggers greeting
+ nameField.addActionListener(e -> greetUser());
+
+ // Simple keyboard shortcuts
+ greetBtn.setMnemonic(KeyEvent.VK_G); // Alt+G
+ clearBtn.setMnemonic(KeyEvent.VK_C); // Alt+C
+ exitBtn.setMnemonic(KeyEvent.VK_X);  // Alt+X
